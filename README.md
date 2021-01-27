@@ -26,8 +26,8 @@ API Methods:
 
 | Action	| Method|	Route |
 |---------------|-------|-------------|
-| Login		|POST	| /users/login|
-| Register	|POST	|/users/register|
+| Login		|POST	| /auth/login|
+| Register	|POST	|/auth/register|
 | Read user by id |GET	|/users/:id	|
 |Update User Info|PUT   |/users/:id	|
 |Add Plant	|POST  |/users/:id/plants|
