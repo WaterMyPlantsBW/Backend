@@ -1,20 +1,21 @@
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 const users = require("../auth/auth-model")
+const usersPlants = require("../user/user-model")
 
 function validateRegistration() {
     return async (req, res, next) => {
 try{
-    const {username, password} = req.body
+    const {username, password, phoneNumber} = req.body
     //check if user exsists
     const user = await users.findByUsername(username)
     if(user) {
         return res.status(409).json({
             message: "username already taken"
         })
-    }else if(!password || !username){
+    }else if(!password || !username || !phoneNumber){
 return res.status(400).json({
-    message: "username and password required"
+    message: "username, password and phone number required"
 })
     }else{
         next()
@@ -49,6 +50,7 @@ else if(!user || !passwordValid){
 }
 }
 
+
 function signToken() {
     return async (req, res, next) => {
         try{
@@ -69,8 +71,27 @@ function signToken() {
         }
     }
 }
+
+function checkUserID(){
+    return async(req, res, next) => {
+try{
+const user = await usersPlants.getUserByID(req.params.id)
+if(user){
+    req.user = user
+    next()
+}else{
+   return res.status(404).json({
+        message: "user with the specified id does not exist!"
+    })
+}
+}catch(err){
+    next(err)
+}
+    }
+}
 module.exports = {
     validateUser,
     signToken,
-    validateRegistration
+    validateRegistration,
+    checkUserID
 }
