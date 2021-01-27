@@ -28,10 +28,10 @@ API Methods:
 |---------------|-------|-------------|
 | Login		|POST	| /users/login|
 | Register	|POST	|/users/register|
-| Read user by id |		|Get	|/users/:id	|
+| Read user by id |GET	|/users/:id	|
 |Update User Info|PUT   |/users/:id	|
 |Add Plant	|POST  |/users/:id/plants|
-|read plant by id	|GET 	|/users/:id/plants/:id |
-| Read user plants |		|GET	|/users/:id/plants|
+|read plant by id|GET 	|/users/:id/plants/:id |
+| Read user plants |GET	|/users/:id/plants|
 | Delete plant	|DELETE	|/users/:id/plants/:id|	
-| Update plant	|Put	|/users/:id/plants/:id|	
+| Update plant	|PUT	|/users/:id/plants/:id|	
