@@ -11,7 +11,7 @@ Users object:
 }
 ```
 
-Plant onjext:
+Plant object:
 ```
 {	id: integer, database generated
 	nickname: string, required, unique,
