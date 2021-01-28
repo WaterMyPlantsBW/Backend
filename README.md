@@ -24,9 +24,8 @@ POST to /auth/registration
  ```
 
 ```
-Update Plant Object for PUT requests to /user/:id/plants/:id
+Update Plant Object for PUT requests to /plants/:id
 { 
-user_id: required,
 plant_id: required both come from params.id,
 nickname: required, unique,
 species: string, optional, defaults to ("Unknown")
