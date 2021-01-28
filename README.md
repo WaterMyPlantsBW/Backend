@@ -26,11 +26,12 @@ POST to /auth/registration
 ```
 Update Plant Object for PUT requests to /plants/:id
 { 
-plant_id: required both come from params.id,
+plant_id: required comes from params.id,
 nickname: required, unique,
 species: string, optional, defaults to ("Unknown")
 image: string, optional, defaults to (null),
-water: string, required format is "2021-01-28"
+water: string, required format is "2021-01-28",
+H2OFrequency: string, required
 }
 ```
 
