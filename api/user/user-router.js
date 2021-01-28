@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const users = require("./user-model")
+const {find} = require("../auth/auth-model")
 const { checkUserID } = require("../middleware/api-middleware")
 const bcrypt = require("bcryptjs")
 
@@ -10,6 +11,14 @@ res.status(200).json(req.user)
 }catch(err){
     next(err)
 }
+})
+router.get("/", async(req, res, next) => {
+    try{
+const usersList = await find()
+res.status(200).json(usersList)
+    }catch(err){
+        next(err)
+    }
 })
 router.put("/:id", checkUserID(), async(req, res, next) => {
     try{

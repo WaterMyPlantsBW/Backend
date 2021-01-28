@@ -25,9 +25,11 @@ res.status(201).json(newUser)
 router.post('/login',validateUser(),signToken(), async (req, res) => {
     try{
       const {username} =req.body
+      const user = await users.findByUsername(username)
       
       res.status(200).json({
           message: `Welcome ${username}!`,
+          userID: user.id,
           token: req.token
       }).end()
     }catch(err) {

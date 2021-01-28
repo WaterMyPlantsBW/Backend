@@ -6,7 +6,7 @@ return findById(id)
 }
 
 function find() {
-    return db("users").select("id","username", "password")
+    return db("users").select("id","username", "password", "phoneNumber")
 }
 
 function findById(id) {

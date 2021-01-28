@@ -60,7 +60,8 @@ function signToken() {
         const token = jwt.sign({
             //this is the payload objet of the token === the data that we want encrypted in the token
             userID: user.id,
-            expiresAt: "2days"
+            userPhoneNumber: user.phoneNumber,
+            expiresAt: "24h"
         }, process.env.JWT_SECRET )
         
         req.token = token
