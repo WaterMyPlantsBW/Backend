@@ -59,5 +59,5 @@ API Methods:
 |Add Plant	|POST  |/users/:id/plants|
 |read plant by id|GET 	|/users/:id/plants/:id |
 | Read user plants |GET	|/users/:id/plants|
-| Delete plant	|DELETE	|/users/:id/plants/:id|	
-| Update plant	|PUT	|/users/:id/plants/:id|	
+| Delete plant	|DELETE	|/plants/:id|	
+| Update plant	|PUT	|/plants/:id|	
