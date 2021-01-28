@@ -10,12 +10,30 @@ Users object:
 	phoneNumber: string, required, unique
 }
 ```
+```
+POST to /auth/registration
+{ username: string, required, unique,
+  password: string, required, max18,
+  phoneNumber: string, required, unique
+ }
+ 
+ POST to /auth/login
+ { username: string, required
+   password: string, required
+ }
+ ```
+
+```
+Update Plant Object
+{ 
+}
+```
 
 Plant object:
 ```
 {	id: integer, database generated
 	nickname: string, required, unique,
-	spicies: string, optional, defaults to ("Unknown")
+	species: string, optional, defaults to ("Unknown")
 	H2OFrequency: string, required,
 	image: string, optional, defaults to (null)
 }
