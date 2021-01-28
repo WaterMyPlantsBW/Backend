@@ -1,14 +1,17 @@
 
 exports.up =async function(knex) {
   await knex.schema.createTable("plants", (tbl) => {
-      tbl.increments()
+      tbl.increments("id")
       tbl.string("nickname", 128).notNull().unique()
       tbl.integer("user_id").notNull().unsigned()
       .references("id")
       .inTable("users")
       .onUpdate("CASCADE")
       .onDelete('CASCADE')
-      tbl.string("image_url", 225)
+      tbl.string("image_url", 225).defaultTo(null)
+      tbl.string("species", 128).defaultTo("Unknown")
+      tbl.date("water").notNull()
+      tbl.string("H2OFrequency").notNull()
   })
 };
 

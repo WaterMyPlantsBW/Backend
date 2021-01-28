@@ -7,9 +7,10 @@ const welcomeRouter = require("./welcome-router")
 const authRouter = require("./auth/auth-router")
 const userRouter = require("./user/user-router")
 
+server.use(express.json())
 server.use(helmet())
 server.use(cors())
-server.use(express.json())
+
 
 
 server.use("/",welcomeRouter)
