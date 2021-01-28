@@ -46,20 +46,7 @@ router.post("/:id/plants", checkUserID(), async (req, res, next) => {
         next(err)
     }
 })
-router.put("/:id/plants/:id", checkUserID(), async(req, res, next) => {
-    try{
 
-    }catch(err){
-        next(err)
-    }
-})
-router.delete("/:id/plants/:id", checkUserID(), async (req, res, next) => {
-    try{
-
-    }catch(err){
-        next(err)
-    }
-})
 router.get("/:id/plants", checkUserID(), async(req, res, next) => {
     try{
 

@@ -7,7 +7,7 @@ const server = express()
 const welcomeRouter = require("./welcome-router")
 const authRouter = require("./auth/auth-router")
 const userRouter = require("./user/user-router")
-
+const plantRouter = require("./plants/plants-router")
 
 server.use(helmet())
 server.use(cors())
@@ -17,7 +17,7 @@ server.use(express.json())
 server.use("/",welcomeRouter)
 server.use("/auth",authRouter)
 server.use("/users",restrict, userRouter)
-
+server.use("/plants", restrict, plantRouter)
 
 
 

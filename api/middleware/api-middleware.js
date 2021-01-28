@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 const users = require("../auth/auth-model")
 const usersPlants = require("../user/user-model")
+const plants = require("../plants/plants-model")
 
 function validateRegistration() {
     return async (req, res, next) => {
@@ -90,9 +91,29 @@ if(user){
 }
     }
 }
+
+function validatePlantID() {
+    return async(req, res, next) => {
+        try{
+            const plant = await plants.findByID(req.params.id)
+            if(plant){
+                req.plant = plant
+                next()
+            }else{
+                return res.status(404).json({
+                    message: "plant does not exist"
+                })
+            }
+        }catch(err) {
+            next(err)
+        }
+        
+    }
+}
 module.exports = {
     validateUser,
     signToken,
     validateRegistration,
-    checkUserID
+    checkUserID,
+    validatePlantID
 }
