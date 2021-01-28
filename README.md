@@ -24,14 +24,14 @@ POST to /auth/registration
  ```
 
 ```
-Update Plant Object for PUT requests to /user/:id/plants/:id
+Update Plant Object for PUT requests to /plants/:id
 { 
-user_id: required,
-plant_id: required both come from params.id,
+plant_id: required comes from params.id,
 nickname: required, unique,
 species: string, optional, defaults to ("Unknown")
 image: string, optional, defaults to (null),
-water: string, required format is "2021-01-28"
+water: string, required format is "2021-01-28",
+H2OFrequency: string, required
 }
 ```
 
@@ -57,7 +57,7 @@ API Methods:
 | Read user by id |GET	|/users/:id	|
 |Update User Info|PUT   |/users/:id	|
 |Add Plant	|POST  |/users/:id/plants|
-|read plant by id|GET 	|/users/:id/plants/:id |
+|read plant by id|GET 	|/plants/:id |
 | Read user plants |GET	|/users/:id/plants|
-| Delete plant	|DELETE	|/users/:id/plants/:id|	
-| Update plant	|PUT	|/users/:id/plants/:id|	
+| Delete plant	|DELETE	|/plants/:id|	
+| Update plant	|PUT	|/plants/:id|	
