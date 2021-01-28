@@ -23,7 +23,9 @@ POST to /auth/registration
  }
  ```
 
-
+```
+Update Plant Object
+{ 
 
 Plant object:
 ```
