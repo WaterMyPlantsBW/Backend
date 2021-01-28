@@ -1,5 +1,5 @@
 # Backend
-API URL:
+API URL: https://water-my-plants-app-team132.herokuapp.com/
 
 
 Users object:
@@ -24,18 +24,26 @@ POST to /auth/registration
  ```
 
 ```
-Update Plant Object
+Update Plant Object for PUT requests to /user/:id/plnats/:id
 { 
+user_id: required,
+plant_id: required both come from params.id,
+nickname: required, unique,
+species: string, optional, defaults to ("Unknown")
+image: string, optional, defaults to (null),
+water: string, required format is "2021-01-28"
 }
 ```
 
-Plant object:
+Plant object for POST requests to /users/:id/plants
 ```
 {	id: integer, database generated
 	nickname: string, required, unique,
 	species: string, optional, defaults to ("Unknown")
 	H2OFrequency: string, required,
-	image: string, optional, defaults to (null)
+	image: string, optional, defaults to (null),
+	user_id: requiered comes from params.id,
+	water: string, required format is "2021-01-28"
 }
 ```
 	
