@@ -29,7 +29,7 @@ Plant object:
 ```
 {	id: integer, database generated
 	nickname: string, required, unique,
-	spicies: string, optional, defaults to ("Unknown")
+	species: string, optional, defaults to ("Unknown")
 	H2OFrequency: string, required,
 	image: string, optional, defaults to (null)
 }
