@@ -2,7 +2,8 @@ const express = require("express")
 const router = express.Router()
 const users = require("./user-model")
 const {find} = require("../auth/auth-model")
-const { checkUserID } = require("../middleware/api-middleware")
+const { checkUserID, validatePlant } = require("../middleware/api-middleware")
+const { addPlant } = require("../plants/plants-model")
 const bcrypt = require("bcryptjs")
 
 router.get("/:id",checkUserID(), async(req, res, next) => {
@@ -23,14 +24,16 @@ res.status(200).json(usersList)
 router.put("/:id", checkUserID(), async(req, res, next) => {
     try{
         const {password, phoneNumber} = req.body
-        const userPassword = req.user.password
-        
-        
+
             const updatedInfo = {
                 password:await bcrypt.hash(password, 15),
                 phoneNumber
             }
-        
+        if(!password || !phoneNumber){
+            res.status(400).json({
+                message: "password and phoneNumber are both required"
+            })
+        }
         const updated = await users.updateUser(updatedInfo, req.params.id)
 res.status(200).json({
     message: "success updated info"
@@ -39,8 +42,11 @@ res.status(200).json({
 
     }
 })
-router.post("/:id/plants", checkUserID(), async (req, res, next) => {
+router.post("/:id/plants", checkUserID(),validatePlant(), async (req, res, next) => {
     try{
+const newPlant = req.body
+    const plant = await addPlant(newPlant, req.params.id)
+    res.status(201).json(plant)
 
     }catch(err){
         next(err)
@@ -49,6 +55,14 @@ router.post("/:id/plants", checkUserID(), async (req, res, next) => {
 
 router.get("/:id/plants", checkUserID(), async(req, res, next) => {
     try{
+const plants = await users.findUserPlants(req.params.id)
+if(plants.length > 0){
+    res.status(200).json(plants)
+}else{
+    res.status(200).json({
+        message: "this user has no plants. Go add some plants! :)"
+    })
+}
 
     }catch(err){
         next(err)
@@ -56,3 +70,9 @@ router.get("/:id/plants", checkUserID(), async(req, res, next) => {
 })
 
 module.exports = router
+
+// "nickname": "adeluSca",
+// "species": "rosacee",
+// "image": "https://miro.medium.com/max/1225/1*TpoqY6ceN5EWz0C7L44aFg.jpeg",
+// "H2OFrequency": "Every 2 days",
+// "water": "2021-01-29"

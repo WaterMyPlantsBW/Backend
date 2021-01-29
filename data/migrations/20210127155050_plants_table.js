@@ -3,7 +3,9 @@ exports.up =async function(knex) {
   await knex.schema.createTable("plants", (tbl) => {
       tbl.increments("id")
       tbl.string("nickname", 128).notNull().unique()
-      tbl.integer("user_id").unsigned()
+      tbl.integer("user_id")
+      .notNull()
+      .unsigned()
       .references("id")
       .inTable("users")
       .onUpdate("CASCADE")

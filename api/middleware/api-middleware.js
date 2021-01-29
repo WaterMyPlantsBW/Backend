@@ -110,10 +110,27 @@ function validatePlantID() {
         
     }
 }
+function validatePlant() {
+    return async(req, res, next) => {
+        try{
+const {nickname, user_id, H2OFrequency, water} = req.body
+if(!nickname || !user_id || !H2OFrequency || !water){
+   return res.status(400).json({
+       message: "provide all required plant info!"
+   })
+}else{
+    next()
+}
+        }catch(err){
+            next(err)
+        }
+    }
+}
 module.exports = {
     validateUser,
     signToken,
     validateRegistration,
     checkUserID,
-    validatePlantID
+    validatePlantID,
+    validatePlant
 }
