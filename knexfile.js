@@ -34,17 +34,15 @@ module.exports = {
 staging: {
   client: 'postgresql',
   connection: {
-    database: 'plantsAPP',
-    user:     'username',
+    database: 'database',
+    user:     'user',
     password: 'password'
   },
   pool: {
     min: 2,
     max: 10
   },
-  migrations: {
-    tableName: 'knex_migrations'
-  }
+  
 },
 testing: {
   client: 'sqlite3',
