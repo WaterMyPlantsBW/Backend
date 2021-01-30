@@ -10,7 +10,10 @@ const userRouter = require("./user/user-router")
 const plantRouter = require("./plants/plants-router")
 
 server.use(helmet())
-server.use(cors())
+server.use(cors({
+	origin: ['http://localhost:3000'],
+    credentials: true
+}))
 server.use(express.json())
 
 
