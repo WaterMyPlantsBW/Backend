@@ -29,6 +29,7 @@ module.exports = {
       min: 2,
       max: 10
     },
+    
 },
 staging: {
   client: 'postgresql',
@@ -41,7 +42,9 @@ staging: {
     min: 2,
     max: 10
   },
-  
+  migrations: {
+    tableName: 'knex_migrations'
+  }
 },
 testing: {
   client: 'sqlite3',
