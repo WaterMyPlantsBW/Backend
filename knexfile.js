@@ -34,7 +34,7 @@ module.exports = {
 staging: {
   client: 'postgresql',
   connection: {
-    database: 'database',
+    database: 'plantsApp',
     user:     'user',
     password: 'password'
   },
