@@ -13,7 +13,7 @@ function findByID(id) {
 }
 
 async function addPlant(plant, UserID) {
-    const [plantID] = await db("plants as p").insert(plant).where("p.user_id", UserID)
+    const [plantID] = await db("plants as p").insert(plant, 'id').where("p.user_id", UserID)
              .join("users as u", "u.id", "p.user_id")
              .select("p.id", "p.user_id", "p.image", "p.nickname", "p.species", "p.H2OFrequency", "p.water")
      return findByID(plantID) 

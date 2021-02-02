@@ -25,7 +25,7 @@ module.exports = {
     connection: process.env.DATABASE_URL,
     migrations: { directory: './data/migrations' },
     seeds: { directory: './data/seeds' },
-    config: {directory: './data/pg_hba.conf'}
+    config: './script.js'
   },
   testing: {
       client: 'sqlite3',
