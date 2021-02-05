@@ -17,7 +17,7 @@ function removeUser(id){
 function findUserPlants(UserId){
     return db("plants as p").where("p.user_id", UserId)
             .join("users as u", "p.user_id", "u.id")
-            
+            .select("p.id", "p.user_id as UserID", "p.nickname", "p.water", "p.H2OFrequency", "p.species", "p.image")
             
 }
 
