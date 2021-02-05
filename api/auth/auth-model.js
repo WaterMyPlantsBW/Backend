@@ -16,10 +16,13 @@ function findById(id) {
 function findByUsername(username) {
     return db("users").where("username", username).first("id", "username", "password")
 }
-
+function findByPhoneNumber(phoneNumber){
+    return db("users").where("phoneNumber", phoneNumber).first("id", "phoneNumber", "username")
+}
 module.exports = {
     find,
     findById,
     findByUsername,
     add,
+    findByPhoneNumber
 }

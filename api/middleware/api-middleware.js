@@ -10,15 +10,15 @@ try{
     const {username, password, phoneNumber} = req.body
     //check if user exsists
     const user = await users.findByUsername(username)
-    if(user) {
+    const phone = await users.findByPhoneNumber(phoneNumber)
+    if(user || phone) {
         return res.status(409).json({
-            message: "username already taken"
+            message: "username or phone number already taken"
         })
     }else if(!password || !username || !phoneNumber){
 return res.status(400).json({
     message: "username, password and phone number required"
-})
-    }else{
+})}else{
         next()
     }
 }catch(err){
