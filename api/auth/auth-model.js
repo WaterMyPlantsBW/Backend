@@ -14,7 +14,7 @@ function findById(id) {
 }
 
 function findByUsername(username) {
-    return db("users").where("username", username).first("id", "username", "password")
+    return db("users").where("username", username).first("id", "username", "password", "phoneNumber")
 }
 function findByPhoneNumber(phoneNumber){
     return db("users").where("phoneNumber", phoneNumber).first("id", "phoneNumber", "username")
