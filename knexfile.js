@@ -25,7 +25,7 @@ module.exports = {
     connection: process.env.DATABASE_URL,
     migrations: { directory: './data/migrations' },
     seeds: { directory: './data/seeds' },
-    config: './script.js'
+    //config: './script.js'
   },
   testing: {
       client: 'sqlite3',
@@ -41,18 +41,21 @@ module.exports = {
       },
   },
 
-  // staging: {
-  //     client: 'postgresql',
-  //     connection: {
-  //       database: 'plantsApp',
-  //       user:     'username',
-  //       password: 'password'
-  //     },
-  //     pool: {
-  //       min: 2,
-  //       max: 10
-  //     },
-  //   }
+  staging: {
+      client: 'postgresql',
+      connection: {
+        database: 'plantsApp',
+        user:     'username',
+        password: 'password'
+      },
+      pool: {
+        min: 2,
+        max: 10
+      },
+      migrations: {
+        tableName: 'knex_migrations'
+      }
+    }
 }
 
 
