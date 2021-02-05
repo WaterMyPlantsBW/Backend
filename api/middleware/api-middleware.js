@@ -114,10 +114,15 @@ function validatePlant() {
     return async(req, res, next) => {
         try{
 const {nickname, user_id, H2OFrequency, water} = req.body
-if(!nickname || !user_id || !H2OFrequency || !water){
+
+if((!nickname || !user_id)){
    return res.status(400).json({
        message: "provide all required plant info!"
    })
+}else if((!H2OFrequency || !water)){
+    return res.status(400).json({
+        message: "provide all required plant info!"
+    })
 }else{
     next()
 }
@@ -126,11 +131,25 @@ if(!nickname || !user_id || !H2OFrequency || !water){
         }
     }
 }
+function ValidatePlantName() {
+return async (req, res, next) => {
+    const {nickname} = req.body
+    const plantName = await plants.findPlantByNickname(nickname)
+if(plantName) {
+    return res.status(409).json({
+        message: "plant name already used"
+    })
+}else{
+    next()
+}
+}
+}
 module.exports = {
     validateUser,
     signToken,
     validateRegistration,
     checkUserID,
     validatePlantID,
-    validatePlant
+    validatePlant,
+    ValidatePlantName
 }

@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const users = require("./user-model")
 const {find} = require("../auth/auth-model")
-const { checkUserID, validatePlant } = require("../middleware/api-middleware")
+const { checkUserID, validatePlant, ValidatePlantName } = require("../middleware/api-middleware")
 const { addPlant } = require("../plants/plants-model")
 const bcrypt = require("bcryptjs")
 
@@ -42,7 +42,7 @@ res.status(200).json({
 
     }
 })
-router.post("/:id/plants", checkUserID(),validatePlant(), async (req, res, next) => {
+router.post("/:id/plants", checkUserID(),validatePlant(),ValidatePlantName(), async (req, res, next) => {
     try{
 const newPlant = req.body
     const plant = await addPlant(newPlant, req.params.id)
