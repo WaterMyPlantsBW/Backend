@@ -9,7 +9,7 @@ function updatePlant(changes,PlantId){
 }
 
 function findByID(id) {
-    return db("plants").where("id", id).first()
+    return db("plants").where("id", id).first("id", "user_id as UserID", "nickname", "water", "H2OFrequency", "species", "image")
 }
 
 async function addPlant(plant, UserID) {
