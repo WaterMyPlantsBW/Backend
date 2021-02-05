@@ -1,5 +1,5 @@
 # Backend
-API URL: https://water-my-plants-app-team132.herokuapp.com/
+API URL: https://water-my-plants-team-no132.herokuapp.com/
 
 
 Users object:
