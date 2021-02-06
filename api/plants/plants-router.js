@@ -13,7 +13,7 @@ res.status(200).json(updatedPlant)
 })
 router.delete("/:id",validatePlantID(), async(req, res, next) => {
     try{
-await plants.removePlant(req.params.id)
+await plants.removePlant(req.plant.id)
 res.status(204).json({
     message: "plant was deleted"
 })

@@ -1,9 +1,9 @@
 const express = require("express")
 const router = express.Router()
 const users = require("./user-model")
+const plants = require("../plants/plants-model")
 const {find} = require("../auth/auth-model")
-const { checkUserID, validatePlant, ValidatePlantName } = require("../middleware/api-middleware")
-const { addPlant } = require("../plants/plants-model")
+const { checkUserID, validatePlant, ValidatePlantName, validatePlantID } = require("../middleware/api-middleware")
 const bcrypt = require("bcryptjs")
 
 router.get("/:id",checkUserID(), async(req, res, next) => {
@@ -45,8 +45,8 @@ res.status(200).json({
 router.post("/:id/plants", checkUserID(),validatePlant(),ValidatePlantName(), async (req, res, next) => {
     try{
 const newPlant = req.body
-    const plant = await addPlant(newPlant, req.params.id)
-    res.status(201).json(plant)
+    const plant = await plants.addPlant(newPlant, req.params.id)
+     res.status(201).json(plant)
 
     }catch(err){
         next(err)
