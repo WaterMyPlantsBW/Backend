@@ -10,7 +10,7 @@ function find() {
 }
 
 function findById(id) {
-    return db("users").where("id", id).first("id", "username", "password")
+    return db("users").where("id", id).first("id", "username", "password", "phoneNumber")
 }
 
 function findByUsername(username) {
@@ -18,6 +18,7 @@ function findByUsername(username) {
 }
 function findByPhoneNumber(phoneNumber){
     return db("users").where("phoneNumber", phoneNumber).first("id", "phoneNumber", "username")
+    return db("users").where("username", username).first("id", "username", "password", "phoneNumber")
 }
 module.exports = {
     find,
