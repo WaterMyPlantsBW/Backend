@@ -11,7 +11,7 @@ const plantRouter = require("./plants/plants-router")
 
 server.use(helmet())
 server.use(cors({
-	origin: ['http://localhost:3000',"https://watermyplants-omega.vercel.app"],
+	origin: ['http://localhost:3000',"https://watermyplants-omega.vercel.app", 'https://watermyplantz.vercel.app'],
     credentials: true
 }))
 server.use(express.json())
