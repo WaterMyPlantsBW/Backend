@@ -11,8 +11,9 @@ async function removePlant(PlantId){
     // return findUserPlants(userID)
 }
 
-function updatePlant(changes,PlantId){
-    return db("plants").where("id",PlantId).update(changes)
+async function updatePlant(changes,PlantId){
+    await db("plants").where("id",PlantId).update(changes)
+    return findByID(PlantId)
 }
 
 function findByID(id) {

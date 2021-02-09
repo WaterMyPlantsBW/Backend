@@ -5,6 +5,7 @@ const {validatePlantID, validatePlant} = require("../middleware/api-middleware")
 
 router.put("/:id",validatePlantID(),validatePlant(), async(req, res, next) => {
     try{
+        
         const updatedPlant = await plants.updatePlant(req.body, req.params.id)
 res.status(200).json(updatedPlant)
     }catch(err){
