@@ -70,9 +70,3 @@ if(plants.length > 0){
 })
 
 module.exports = router
-
-// "nickname": "adeluSca",
-// "species": "rosacee",
-// "image": "https://miro.medium.com/max/1225/1*TpoqY6ceN5EWz0C7L44aFg.jpeg",
-// "H2OFrequency": "Every 2 days",
-// "water": "2021-01-29"
