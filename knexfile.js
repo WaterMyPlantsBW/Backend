@@ -44,18 +44,6 @@ module.exports = {
       },
   },
 
-  // staging: {
-  //     client: 'postgresql',
-  //     connection: {
-  //       database: 'plantsApp',
-  //       user:     'username',
-  //       password: 'password'
-  //     },
-  //     pool: {
-  //       min: 2,
-  //       max: 10
-  //     },
-  //   }
-}
+  
 
 
