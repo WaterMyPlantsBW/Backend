@@ -10,20 +10,25 @@ try{
     const {username, password, phoneNumber} = req.body
     //check if user exsists
     const user = await users.findByUsername(username)
+    console.log(user)
     const phone = await users.findByPhoneNumber(phoneNumber)
+    console.log(phone)
     if(user || phone) {
         return res.status(409).json({
             message: "username or phone number already taken"
         })
-    }else if(!password || !username || !phoneNumber){
-return res.status(400).json({
-    message: "username, password and phone number required"
-})}else{
+    }
+    else if(!password || !username || !phoneNumber){
+        return res.status(400).json({
+          message: "username, password and phone number required"
+    })}
+    else{
         next()
     }
-}catch(err){
-    next(err)
 }
+    catch(err){
+      next(err)
+    }
     }
 }
 function validateUser() {
@@ -31,6 +36,7 @@ function validateUser() {
     try{
         const {username, password} = req.body
         const user = await users.findByUsername(username)
+        console.log(username)
         const passwordValid = await bcrypt.compare(password, user.password)
         
 if(!username || !password){

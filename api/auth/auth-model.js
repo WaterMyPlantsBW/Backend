@@ -14,11 +14,13 @@ function findById(id) {
 }
 
 function findByUsername(username) {
-    return db("users").where("username", username).first("id", "username", "password", "phoneNumber")
+    return db("users").where("username", username).first()
+    // ("id", "username", "password", "phoneNumber")
 }
 function findByPhoneNumber(phoneNumber){
-    return db("users").where("phoneNumber", phoneNumber).first("id", "phoneNumber", "username")
-    return db("users").where("username", username).first("id", "username", "password", "phoneNumber")
+    console.log(phoneNumber)
+    return db("users").where({phoneNumber})
+    // return db("users").where("username", username).first("id", "username", "password", "phoneNumber")
 }
 module.exports = {
     find,
